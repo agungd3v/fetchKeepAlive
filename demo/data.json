@@ -1,0 +1,22 @@
+[
+  {
+    "image": "http://127.0.0.1:5500/fetchKeepAlive/demo/images/antena-1.jpg",
+    "width": 500,
+    "height": 500
+  },
+  {
+    "image": "http://127.0.0.1:5500/fetchKeepAlive/demo/images/antena-2.jpg",
+    "width": 500,
+    "height": 500
+  },
+  {
+    "image": "http://127.0.0.1:5500/fetchKeepAlive/demo/images/antena-3.jpg",
+    "width": 500,
+    "height": 500
+  },
+  {
+    "image": "http://127.0.0.1:5500/fetchKeepAlive/demo/images/antena-4.jpg",
+    "width": 500,
+    "height": 500
+  }
+]
