@@ -27,7 +27,7 @@ OR feel free using cdn
 ```python
 new fetchKeepAlive({
   data: 'https://cdn.jascom.tech/fetchKeepAlive/demo/data.json',
-  selector: '#selector'
+  selector: '#yourid'
 })
 ```
 
