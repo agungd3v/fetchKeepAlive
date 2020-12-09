@@ -37,10 +37,16 @@ class fetchKeepAlive {
       justifyContent: "center",
       alignItems: "center"
     })
+    let avaliableData = 0
     dt.forEach(data => {
-      const appendIn = this.appendIn(data.image, data.width, data.height)
-      element.innerHTML += appendIn === undefined ? element.remove() : appendIn
+      if (data.width <= window.innerWidth) {
+        avaliableData++
+        element.innerHTML += this.appendIn(data.image, data.width, data.height)
+      }
     })
+    if (avaliableData < 1) {
+      element.remove()
+    }
     element.querySelectorAll('button').forEach((e, i) => {
       const endIndex = 0
       e.addEventListener('click', function() {
@@ -51,16 +57,14 @@ class fetchKeepAlive {
   }
   appendIn(src, width, height) {
     const styles = this.styleString(width, height)
-    if (width <= window.innerWidth) {
-      return `
-        <div style="${styles.wrapper}">
-          <div style="position: relative">
-            <button style="${styles.close}">x</button>
-            <img src="${src}" width="${width - 50}" height="${height - 50}"></img>
-          </div>
+    return `
+      <div style="${styles.wrapper}">
+        <div style="position: relative">
+          <button style="${styles.close}">x</button>
+          <img src="${src}" width="${width - 50}" height="${height - 50}"></img>
         </div>
-      `
-    }
+      </div>
+    `
   }
   styleString(w, h) {
     const wrapper = {
