@@ -15,7 +15,12 @@ class fetchKeepAlive {
   }
   async get(obj) {
     let make
-    const uri = await fetch(obj)
+    const uri = await fetch(obj, {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
     if (uri.status === 404) return console.error('Oops, maybe you typo pass the url ?🤔')
     if (uri.status === 500) return console.error('Oops, there may be a problem with your server🤐')
     if (uri.status === 200) make = await uri.json()
@@ -37,14 +42,22 @@ class fetchKeepAlive {
       justifyContent: "center",
       alignItems: "center"
     })
-    let avaliableData = 0
-    dt.forEach(data => {
-      if (data.width <= window.innerWidth) {
-        avaliableData++
-        element.innerHTML += this.appendIn(data.image, data.width, data.height)
+    if (dt.status) {
+      if (dt.message.length < 1) {
+        element.remove()
+      } else {
+        let avalibleData = 0
+        dt.message.forEach(data => {
+          if (data.width <= window.innerWidth) {
+            avalibleData++
+            element.innerHTML += this.appendIn(data.image, data.width, data.height)
+          }
+        })
+        if (avalibleData < 1) {
+          element.remove()
+        }
       }
-    })
-    if (avaliableData < 1) {
+    } else {
       element.remove()
     }
     element.querySelectorAll('button').forEach((e, i) => {
